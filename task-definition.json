@@ -1,9 +1,9 @@
 {
-    "family": "linux",
+    "family": "ecr-demo",
     "containerDefinitions": [
         {
             "image": "REPOSITORY_URI:BUILD_NUMBER",
-            "name": "ecs-container-demo",
+            "name": "ecr-demo",
 	    "essential": true,
             "portMappings": [
                 {
@@ -19,5 +19,5 @@
              "FARGATE"
     ],
     "networkMode": "awsvpc",
-    "executionRoleArn": "ecsTaskExecutionRole" 
+    "executionRoleArn": "arn:aws:iam::975639581513:role/ecsTaskExecutionRole" 
 }
