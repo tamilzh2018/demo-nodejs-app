@@ -1,9 +1,9 @@
 {
-    "family": linux,
+    "family": "linux",
     "containerDefinitions": [
         {
             "image": "REPOSITORY_URI:BUILD_NUMBER",
-            "name": latest,
+            "name": "ecs-container-demo",
 	    "essential": true,
             "portMappings": [
                 {
@@ -19,5 +19,5 @@
              "FARGATE"
     ],
     "networkMode": "awsvpc",
-    "executionRoleArn": ecsTaskExecutionRole 
+    "executionRoleArn": "ecsTaskExecutionRole" 
 }
