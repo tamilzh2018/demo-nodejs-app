@@ -1,16 +1,18 @@
 pipeline {
     agent any
     environment {
-        AWS_ACCOUNT_ID="CHANGE_ME"
-        AWS_DEFAULT_REGION="CHANGE_ME" 
-	CLUSTER_NAME="CHANGE_ME"
-	SERVICE_NAME="CHANGE_ME"
-	TASK_DEFINITION_NAME="CHANGE_ME"
-	DESIRED_COUNT="CHANGE_ME"
-        IMAGE_REPO_NAME="CHANGE_ME"
+        AWS_ACCOUNT_ID="711327469867"
+        AWS_DEFAULT_REGION="ap-south-1" 
+	CLUSTER_NAME="ecs-demo"
+	SERVICE_NAME="ecs-service-demo"
+	TASK_DEFINITION_NAME="ecs-task-demo"
+	DESIRED_COUNT="1"
+        IMAGE_REPO_NAME="image-repo"
         IMAGE_TAG="${env.BUILD_ID}"
-        REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
-	registryCredential = "CHANGE_ME"
+        //REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
+	REPOSITORY_URI = "http://192.168.43.89:8081/repository/image-repo/"
+	registryCredential = "nexus-admin"
+	registryCredentialAws = "aws-cred"
     }
    
     stages {
@@ -35,10 +37,10 @@ pipeline {
     }
    
     // Uploading Docker images into AWS ECR
-    stage('Pushing to ECR') {
+    stage('Pushing to Nexus') {
      steps{  
          script {
-			docker.withRegistry("https://" + REPOSITORY_URI, "ecr:${AWS_DEFAULT_REGION}:" + registryCredential) {
+			docker.withRegistry("REPOSITORY_URI" + registryCredential) {
                     	dockerImage.push()
                 	}
          }
@@ -49,6 +51,7 @@ pipeline {
      steps{
             withAWS(credentials: registryCredential, region: "${AWS_DEFAULT_REGION}") {
                 script {
+			sh 'chmod +x '
 			sh './script.sh'
                 }
             } 
@@ -57,4 +60,3 @@ pipeline {
       
     }
 }
-
