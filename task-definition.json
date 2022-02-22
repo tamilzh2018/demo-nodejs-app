@@ -1,9 +1,9 @@
 {
-    "family": " ",
+    "family": "ecr-demo",
     "containerDefinitions": [
         {
             "image": "REPOSITORY_URI:BUILD_NUMBER",
-            "name": " ",
+            "name": "ecr-demo",
 	    "essential": true,
             "portMappings": [
                 {
@@ -19,5 +19,5 @@
              "FARGATE"
     ],
     "networkMode": "bridge",
-    "executionRoleArn": "{{ecsTaskExecutionRoleArn}}"
+    "executionRoleArn": "{{arn:aws:iam::975639581513:role/ecsTaskExecutionRole}}"
 }
