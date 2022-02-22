@@ -1,9 +1,9 @@
 {
-    "family": "ecr-demo",
+    "family": " ",
     "containerDefinitions": [
         {
             "image": "REPOSITORY_URI:BUILD_NUMBER",
-            "name": "ecr-demo",
+            "name": " ",
 	    "essential": true,
             "portMappings": [
                 {
@@ -16,7 +16,8 @@
     "cpu": "256",
     "memory": "512",
     "requiresCompatibilities": [
-             "EC2"
+             "FARGATE"
     ],
     "networkMode": "bridge",
+    "executionRoleArn": "{{ecsTaskExecutionRoleArn}}"
 }
