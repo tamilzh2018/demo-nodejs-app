@@ -7,7 +7,7 @@ pipeline {
 	SERVICE_NAME="ecs-service-demo"
 	TASK_DEFINITION_NAME="ecs-task-demo"
 	DESIRED_COUNT="1"
-        IMAGE_REPO_NAME="image-repo"
+        IMAGE_REPO_NAME="jenkins-docker-nexus"
         IMAGE_TAG="${env.BUILD_ID}"
         //REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
 	//REPOSITORY_URI = "http://192.168.43.89:8081/repository/image-repo/"
