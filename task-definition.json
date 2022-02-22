@@ -1,5 +1,5 @@
 {
-    "family": "ecr-demo",
+    "family": "ecr-demo-FARGATE",
     "containerDefinitions": [
         {
             "image": "REPOSITORY_URI:BUILD_NUMBER",
@@ -19,5 +19,5 @@
              "FARGATE"
     ],
     "networkMode": "bridge",
-    "executionRoleArn": "{{arn:aws:iam::975639581513:role/ecsTaskExecutionRole}}"
+    "executionRoleArn": "{{ecsTaskExecutionRoleArn}}"
 }
