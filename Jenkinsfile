@@ -11,7 +11,7 @@ pipeline {
         IMAGE_TAG="${env.BUILD_ID}"
         //REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
 	//REPOSITORY_URI = "http://192.168.43.89:8081/repository/image-repo/"
-	REPOSITORY_URI= "hub.docker.com/repositories/${IMAGE_REPO_NAME}
+	REPOSITORY_URI= "hub.docker.com/repositories/${IMAGE_REPO_NAME}"
 	//registryCredential = "nexus-admin"
 	registryCredential = "docker-admin"
 	registryCredentialAws = "aws-cred"
