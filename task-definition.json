@@ -16,8 +16,7 @@
     "cpu": "256",
     "memory": "512",
     "requiresCompatibilities": [
-             "FARGATE"
+             "EC2"
     ],
-    "networkMode": "awsvpc",
-    "executionRoleArn": "arn:aws:iam::975639581513:role/ecsTaskExecutionRole" 
+    "networkMode": "bridge",
 }
