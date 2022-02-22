@@ -40,7 +40,7 @@ pipeline {
     stage('Pushing to Nexus') {
      steps{  
          script {
-			docker.withRegistry("REPOSITORY_URI" + registryCredential) {
+			docker.withRegistry(REPOSITORY_URI + registryCredential) {
                     	dockerImage.push()
                 	}
          }
@@ -49,7 +49,7 @@ pipeline {
       
     stage('Deploy') {
      steps{
-            withAWS(credentials: registryCredential, region: "${AWS_DEFAULT_REGION}") {
+            withAWS(credentials: registryCredentialAws, region: "${AWS_DEFAULT_REGION}") {
                 script {
 			sh 'chmod +x script.sh'
 			sh './script.sh'
