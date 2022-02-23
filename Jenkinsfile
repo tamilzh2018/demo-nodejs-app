@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "tamizh2002/jenkins-docker-nexus"
+    registry = "tamizh2022/jenkins-docker-nexus"
     registryCredential = 'docker-admin'
     dockerImage = ''
   }
