@@ -23,7 +23,7 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry( 'http://192.168.43.89:8081/', registryCredential ) {
+          docker.withRegistry( 'http://192.168.43.89:1111/', registryCredential ) {
             dockerImage.push()
           }
         }
