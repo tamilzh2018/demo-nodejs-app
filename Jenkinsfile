@@ -1,7 +1,9 @@
 pipeline {
   environment {
-    registry = "tamizh2022/jenkins-docker-nexus"
-    registryCredential = 'docker-admin'
+      registry = "repository/image-repo"
+    //registryCredential = 'nexus-admin'
+    //registry = "tamizh2022/jenkins-docker-nexus"
+    //registryCredential = 'docker-admin'
     dockerImage = ''
   }
   agent any
@@ -21,7 +23,7 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry( '', registryCredential ) {
+          docker.withRegistry( 'http://192.168.43.89:8081/', registryCredential ) {
             dockerImage.push()
           }
         }
